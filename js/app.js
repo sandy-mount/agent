@@ -1,0 +1,109 @@
+import { html, Component, render } from '../js/spux.js'
+import '../js/dior.js'
+
+const json = di.data['@graph']
+
+async function getVersion () {
+  try {
+    const response = await fetch('https://sandy-mount.github.io/agent/package.json')
+    const data = await response.json()
+    return data.version
+  } catch (error) {
+    console.warn('Failed to fetch package.json, falling back to version 0.0.1:', error)
+    return '0.0.1'
+  }
+}
+
+function Ontology (props) {
+  return html`
+    <div>
+      <h1>${props.title}</h1>
+      <p>${props.description}</p>
+      <p style="font-style: italic;">Version: ${version}</p>
+    </div>
+  `
+}
+
+function Category (props) {
+  function handleHeadingClick (e) {
+    e.preventDefault()
+    const id = e.target.id
+    window.history.pushState(null, null, `#${id}`)
+  }
+
+  return html`
+    <div>
+      <h1 id="${props.label}" onClick=${handleHeadingClick}>${props.label}</h1>
+      <p>Comment: ${props.comment}</p>
+      <p>Term status: ${props.termStatus}</p>
+    </div>
+  `
+}
+
+function App () {
+  const ontology = json.find(item => item['@type'] === 'owl:Ontology')
+  const items = json.filter(item => item['@type'].includes('rdfs:Class'))
+
+  const properties = json.filter(item =>
+    item['@type'].includes('rdfs:Property')
+  )
+
+
+  const githubUrl = 'https://github.com/sandy-mount/agent/'
+
+  return html`
+  <a href="${githubUrl}" class="github-fork">
+  <img
+    decoding="async"
+    loading="lazy"
+    width="149"
+    height="149"
+    src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149"
+    class="attachment-full size-full"
+    alt="Fork me on GitHub"
+    data-recalc-dims="1"
+  />
+  </a>
+
+    <header class="w3c-header">
+      <h1><a style="text-decoration: none" href="${githubUrl}" target="_blank" rel="noopener noreferrer">Agent Vocabulary</a></h1>
+
+
+      <h2>Community Draft</h2>
+    </header>
+    <div class="container">
+      <${Ontology} title=${ontology.title} description=${ontology.description} />
+      <hr />
+      ${items.map(
+    item => html`
+          <div class="property-block">
+            <${Category}
+              label="${item.label}"
+              comment=${item.comment}
+              termStatus=${item.term_status}
+            />
+          </div>
+        `
+  )}
+
+      <hr />
+
+      ${properties.map(
+    item => html`
+          <div class="property-block">
+            <${Category}
+              label="${item.label}"
+              comment=${item.comment}
+              termStatus=${item.term_status}
+            />
+          </div>
+        `
+  )}
+    </div>
+  `
+}
+
+var version = await getVersion()
+// console.log('version', version)
+
+render(html`<${App} />`, document.body)

@@ -1,0 +1,28 @@
+{
+  "name": "agent-vocab",
+  "version": "0.0.1",
+  "description": "Agent Vocab for Linked Data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandy-mount/agent.git"
+  },
+  "keywords": [
+    "agent",
+    "vocab",
+    "linked",
+    "data",
+    "ontology",
+    "sandy-mount",
+    "sandymount"
+  ],
+  "author": "Melvin Carvalho <https://melvincarvalho.com/#me> (melvincarvalho@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sandy-mount/agent/issues"
+  },
+  "homepage": "https://github.com/sandy-mount/agent#readme"
+}

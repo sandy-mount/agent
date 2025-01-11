@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Vocabulary</title>
+    <link href="./vocab.json" rel="alternate" type="application/json" />
+    <link href="./vocab.jsonld" rel="alternate" type="application/ld+json" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="application/ld+json" id="data">
+      {
+        "@context": {
+          "dc": "http://purl.org/dc/elements/1.1/",
+          "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+          "owl": "http://www.w3.org/2002/07/owl#",
+          "xsd": "http://www.w3.org/2001/XMLSchema#",
+          "terms": "http://www.w3.org/2003/06/sw-vocab-status/ns#",
+          "agent": "https://w3id.org/agent#",
+          "description": {
+            "@id": "dc:description",
+            "@type": "xsd:string"
+          },
+          "title": {
+            "@id": "dc:title",
+            "@type": "xsd:string"
+          },
+          "comment": {
+            "@id": "rdfs:comment",
+            "@type": "xsd:string"
+          },
+          "label": {
+            "@id": "rdfs:label",
+            "@type": "xsd:string"
+          },
+          "term_status": {
+            "@id": "terms:term_status",
+            "@type": "xsd:string"
+          },
+          "type": {
+            "@id": "rdf:type",
+            "@type": "@id"
+          },
+          "domain": {
+            "@id": "rdfs:domain",
+            "@type": "@id"
+          },
+          "range": {
+            "@id": "rdfs:range",
+            "@type": "@id"
+          },
+          "isDefinedBy": {
+            "@id": "rdfs:isDefinedBy",
+            "@type": "@id"
+          },
+          "Property": "rdfs:Property",
+          "Class": "rdfs:Class"
+        },
+        "@graph": [
+          {
+            "@id": "agent:",
+            "@type": "owl:Ontology",
+            "description": "This vocabulary defines the concept of an Agent - an entity that has agency and can act independently.",
+            "title": "Agent vocabulary"
+          },
+          {
+            "@id": "agent:Agent",
+            "@type": "rdfs:Class",
+            "comment": "An entity that has agency - the capacity to act independently and make free choices.",
+            "label": "Agent",
+            "term_status": "stable"
+          },
+          {
+            "@id": "agent:agent",
+            "@type": ["rdfs:Property"],
+            "comment": "Links a Thing to an Agent that has agency over it.",
+            "domain": {
+              "@id": "owl:Thing"
+            },
+            "isDefinedBy": {
+              "@id": "agent:"
+            },
+            "label": "agent",
+            "range": {
+              "@id": "agent:Agent"
+            },
+            "term_status": "stable"
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <script type="module" src="./js/app.js"></script>
+
+  <body></body>
+</html>
