@@ -1,6 +1,7 @@
 {
   "@context": {
     "@version": 1.1,
+    "@base": "urn:json:",
     "Agent": "https://w3id.org/agent#Agent",
     "agent": "https://w3id.org/agent#agent"
   }
