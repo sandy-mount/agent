@@ -34,6 +34,6 @@ This document is a draft vocabulary specification.
 
 ## License
 
-This vocabulary is available under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+This vocabulary is available under the [MIT License](https://opensource.org/licenses/MIT).
 
 ---
